@@ -11,7 +11,7 @@ public class Question5
     n = in.nextInt();
     int a[] = new int[n];
     //System.out.println("Enter all the elements:");
-    for(i = 0; i < n; i++)
+    for(i = 1; i < n; i++)
     {
       a[i] = in.nextInt();
     }
