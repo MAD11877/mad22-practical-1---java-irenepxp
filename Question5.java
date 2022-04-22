@@ -1,31 +1,56 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.HashMap;
 
 public class Question5
 {
   public static void main(String[] args)
   {
-    int n, x, count = 0, i = 0;
+    int n, x;
     Scanner in = new Scanner(System.in);
     //System.out.print("Enter no. of elements you want in array:");
     n = in.nextInt();
-    int a[] = new int[n];
+    ArrayList<Integer> a = new ArrayList<Integer>();
     //System.out.println("Enter all the elements:");
-    for(i = 1; i < n; i++)
+    for(int i = 0; i < n; i++)
     {
-      a[i] = in.nextInt();
+      int ans = in.nextInt();
+      a.add(ans);
     }
-    //System.out.print("Enter the element of which you want to count number of occurrences:");
-    x = in.nextInt();
-    for(i = 0; i < n; i++)
+
+    HashMap<Integer, Integer> d = new HashMap<Integer, Integer>();
+    for(int num : a)
     {
-      if(a[i] == x)
-        {
-          count++;
-        }
+      if(d.containsKey(num))
+      {
+        int exist = d.get(num) + 1;
+        d.put(num, exist);
+      }
+      else
+      {
+        d.put(num, 1);
+      }
     }
-    //System.out.println("Number of Occurrence of the Element:"+count);
-    System.out.println(count);
+
+    int m = 0;
+    for(int i : d.values())
+    {
+      if(i > m)
+      {
+        m = i;
+      }
+    }
+
+    int result = 0;
+    for(int i : d.keySet())
+    {
+      if(d.get(i) == m)
+      {
+        result = i;
+      }
+    }
+
+    System.out.println(result);
 
   }
 }
